@@ -17,7 +17,7 @@ client.connect();
 client.on("message", (channel, tags, message, self) => {
 	if (self) return;
 	
-	console.log(tags)
+	console.log(tags);
 	
 	if (message === "!ping") {
 		client.say(channel, `@${tags.username} pong`);
