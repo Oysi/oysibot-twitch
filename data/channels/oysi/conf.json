@@ -1,0 +1,14 @@
+{
+	"commands": {
+		"ping": {
+			"enabled": true
+		},
+		"oysibot": {
+			"enabled": true
+		},
+		"yarr": {
+			"enabled": true
+		}
+	},
+	"enabled": true
+}

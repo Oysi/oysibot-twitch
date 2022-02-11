@@ -1,0 +1,11 @@
+{
+	"commands": {
+		"oysibot": {
+			"enabled": true
+		},
+		"yarr": {
+			"enabled": true
+		}
+	},
+	"enabled": true
+}
