@@ -12,13 +12,37 @@ info.on_message = (channel, tags, message, self) => {
 			const name = result[1];
 			const amnt = result[2];
 			
-			if (!info.conf_cmd.least_boy || (amnt <= info.conf_cmd.least_boy.amnt)) {
+			let changed = false;
+			
+			if (!info.conf_cmd.least_boy) {
+				info.conf_cmd.least_boy = {
+					"name": "none",
+					"amnt": "100"
+				};
+				changed = true;
+			}
+			
+			if (!info.conf_cmd.most_boy) {
+				info.conf_cmd.most_boy = {
+					"name": "none",
+					"amnt": "0"
+				};
+				changed = true;
+			}
+			
+			if (amnt <= info.conf_cmd.least_boy.amnt) {
 				info.conf_cmd.least_boy.name = name;
 				info.conf_cmd.least_boy.amnt = amnt;
+				changed = true;
 			}
-			if (!info.conf_cmd.most_boy || (amnt >= info.conf_cmd.most_boy.amnt)) {
+			if (amnt >= info.conf_cmd.most_boy.amnt) {
 				info.conf_cmd.most_boy.name = name;
 				info.conf_cmd.most_boy.amnt = amnt;
+				changed = true;
+			}
+			
+			if (changed) {
+				info.conf_save();
 			}
 			
 			info.client.say(
