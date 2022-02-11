@@ -21,5 +21,7 @@ client.on("message", (channel, tags, message, self) => {
 	
 	if (message === "!ping") {
 		client.say(channel, `@${tags.username} pong`);
+	} else if (message === "!error") {
+		cause_error_at_runtime();
 	}
 });
