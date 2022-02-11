@@ -14,30 +14,30 @@ info.on_message = (channel, tags, message, self) => {
 			
 			let changed = false;
 			
-			if (!info.conf_cmd.least_boy) {
-				info.conf_cmd.least_boy = {
+			if (!info.conf.least_boy) {
+				info.conf.least_boy = {
 					"name": "none",
 					"amnt": "100"
 				};
 				changed = true;
 			}
 			
-			if (!info.conf_cmd.most_boy) {
-				info.conf_cmd.most_boy = {
+			if (!info.conf.most_boy) {
+				info.conf.most_boy = {
 					"name": "none",
 					"amnt": "0"
 				};
 				changed = true;
 			}
 			
-			if (amnt <= info.conf_cmd.least_boy.amnt) {
-				info.conf_cmd.least_boy.name = name;
-				info.conf_cmd.least_boy.amnt = amnt;
+			if (amnt <= info.conf.least_boy.amnt) {
+				info.conf.least_boy.name = name;
+				info.conf.least_boy.amnt = amnt;
 				changed = true;
 			}
-			if (amnt >= info.conf_cmd.most_boy.amnt) {
-				info.conf_cmd.most_boy.name = name;
-				info.conf_cmd.most_boy.amnt = amnt;
+			if (amnt >= info.conf.most_boy.amnt) {
+				info.conf.most_boy.name = name;
+				info.conf.most_boy.amnt = amnt;
 				changed = true;
 			}
 			
@@ -47,9 +47,9 @@ info.on_message = (channel, tags, message, self) => {
 			
 			info.client.say(
 				channel,
-				`most boy: ${info.conf_cmd.most_boy.name} (${info.conf_cmd.most_boy.amnt}%)`
+				`most boy: ${info.conf.most_boy.name} (${info.conf.most_boy.amnt}%)`
 				+ ", "
-				+ `least boy: ${info.conf_cmd.least_boy.name} (${info.conf_cmd.least_boy.amnt}%)`
+				+ `least boy: ${info.conf.least_boy.name} (${info.conf.least_boy.amnt}%)`
 			)
 		}
 	}
