@@ -30,12 +30,12 @@ info.on_message = (channel, tags, message, self) => {
 				changed = true;
 			}
 			
-			if (amnt <= info.conf.least_boy.amnt) {
+			if (Number(amnt) <= Number(info.conf.least_boy.amnt)) {
 				info.conf.least_boy.name = name;
 				info.conf.least_boy.amnt = amnt;
 				changed = true;
 			}
-			if (amnt >= info.conf.most_boy.amnt) {
+			if (Number(amnt) >= Number(info.conf.most_boy.amnt)) {
 				info.conf.most_boy.name = name;
 				info.conf.most_boy.amnt = amnt;
 				changed = true;
