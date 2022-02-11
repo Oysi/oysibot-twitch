@@ -35,7 +35,7 @@ fs
 	info.channel = channel;
 	info.conf = JSON.parse(fs.readFileSync(`${__dirname}/../data/channels/${channel}/conf.json`));
 	info.conf_save = () => {
-		fs.writeFileSync(`${__dirname}/../data/channels/${channel}/conf.json`, JSON.stringify(chan.conf, null, "\t"));
+		fs.writeFileSync(`${__dirname}/../data/channels/${channel}/conf.json`, JSON.stringify(info.conf, null, "\t"));
 	}
 	
 	// initial value
