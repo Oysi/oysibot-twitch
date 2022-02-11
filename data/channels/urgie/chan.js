@@ -53,6 +53,12 @@ info.on_message = (channel, tags, message, self) => {
 			)
 		}
 	}
+	if (message === "!resetboy") {
+		info.conf.least_boy.name = "none";
+		info.conf.least_boy.amnt = "100";
+		info.conf.most_boy.name = "none";
+		info.conf.most_boy.amnt = "0";
+	}
 }
 
 module.exports = info;
