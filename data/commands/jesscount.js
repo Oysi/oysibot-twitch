@@ -16,7 +16,7 @@ info.on_message = (channel, tags, message, self) => {
 			}
 		}
 		
-		let text
+		let text;
 		
 		if (count == 1) {
 			text = `There is ${count} jess in chat.`

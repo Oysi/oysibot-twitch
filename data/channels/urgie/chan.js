@@ -53,11 +53,13 @@ info.on_message = (channel, tags, message, self) => {
 			)
 		}
 	}
-	if (message === "!resetboy") {
+	if ((message === "!resetboy") && (tags.username == "urgie" || tags.username == "oysi")) {
 		info.conf.least_boy.name = "none";
 		info.conf.least_boy.amnt = "100";
 		info.conf.most_boy.name = "none";
 		info.conf.most_boy.amnt = "0";
+		info.conf_save();
+		info.client.say(channel, "boys have been reset")
 	}
 }
 
