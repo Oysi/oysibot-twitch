@@ -65,6 +65,16 @@ const client = new tmi.Client({
 	channels: channels_array
 });
 
+global.client = client
+
+global.is_cmd_on = (info, name) => {
+	if (!info.conf.commands[name] || !info.conf.commands[name].enabled) {
+		return false;
+	} else {
+		return true;
+	}
+}
+
 for (let key in commands) {
 	commands[key].client = client;
 }
@@ -76,6 +86,7 @@ for (let key in channels) {
 client.connect();
 
 client.on("message", (channel, tags, message, self) => {
+	// console.log(tags);
 	if (self) return;
 	
 	channel = channel.substring(1);
@@ -101,17 +112,23 @@ client.on("message", (channel, tags, message, self) => {
 				}
 			}
 			if (info.conf.commands[command_name] && info.conf.commands[command_name].enabled) {
-				const command = commands[result[1]];
-				if (command) {
-					let message = result[2];
-					// if (message === "") {
-					// 	message = null;
-					// }
-					command.channel = info.channel;
-					command.conf = info.conf;
-					command.conf_cmd = info.conf.commands[command_name];
-					command.conf_save = info.conf_save;
-					command.on_message(info.channel, tags, message, self);
+				if (
+					!info.conf.commands[command_name].moderator
+					|| tags.badges.broadcaster === "1"
+					|| tags.badges.moderator === "1"
+				) {
+					const command = commands[command_name];
+					if (command) {
+						let message = result[2];
+						// if (message === "") {
+						// 	message = null;
+						// }
+						command.channel = info.channel;
+						command.conf = info.conf;
+						command.conf_cmd = info.conf.commands[command_name];
+						command.conf_save = info.conf_save;
+						command.on_message(info.channel, tags, message, self);
+					}
 				}
 			}
 		}
