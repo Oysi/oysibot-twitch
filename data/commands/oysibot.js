@@ -34,33 +34,37 @@ info.on_message = (channel, tags, message, self) => {
 			client.say(channel, list.join(" | "));
 		} else if (parts[1] == "enable") {
 			const cmd_name = parts[2];
-			let changed = false;
-			if (!info.conf.commands[cmd_name]) {
-				info.conf.commands[cmd_name] = {};
-				changed = true;
-			}
-			if (info.conf.commands[cmd_name].enabled != true) {
-				info.conf.commands[cmd_name].enabled = true;
-				changed = true;
-				client.say(channel, "cmd enabled: !" + cmd_name);
-			}
-			if (changed) {
-				info.conf_save();
+			if (commands[cmd_name]) {
+				let changed = false;
+				if (!info.conf.commands[cmd_name]) {
+					info.conf.commands[cmd_name] = {};
+					changed = true;
+				}
+				if (info.conf.commands[cmd_name].enabled != true) {
+					info.conf.commands[cmd_name].enabled = true;
+					changed = true;
+					client.say(channel, "cmd enabled: " + cmd_name);
+				}
+				if (changed) {
+					info.conf_save();
+				}
 			}
 		} else if (parts[1] == "disable") {
 			const cmd_name = parts[2];
-			let changed = false;
-			if (!info.conf.commands[cmd_name]) {
-				info.conf.commands[cmd_name] = {};
-				changed = true;
-			}
-			if (info.conf.commands[cmd_name].enabled != false) {
-				info.conf.commands[cmd_name].enabled = false;
-				changed = false;
-				client.say(channel, "cmd disabled: !" + cmd_name);
-			}
-			if (changed) {
-				info.conf_save();
+			if (commands[cmd_name]) {
+				let changed = false;
+				if (!info.conf.commands[cmd_name]) {
+					info.conf.commands[cmd_name] = {};
+					changed = true;
+				}
+				if (info.conf.commands[cmd_name].enabled != false) {
+					info.conf.commands[cmd_name].enabled = false;
+					changed = false;
+					client.say(channel, "cmd disabled: " + cmd_name);
+				}
+				if (changed) {
+					info.conf_save();
+				}
 			}
 		} else {
 			info.client.say(channel, " oysibot cmd <list, enable, disable>");
