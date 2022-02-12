@@ -23,7 +23,8 @@ info.on_message = (channel, tags, message, self) => {
 			let text = "";
 			const list = [];
 			for (let key in commands) {
-				let cmd = "!" + key;
+				// let cmd = "!" + key;
+				let cmd = key;
 				if (is_cmd_on(info, key)) {
 					list.push(cmd + " VoteYea");
 				} else {
