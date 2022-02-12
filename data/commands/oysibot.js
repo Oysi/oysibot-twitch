@@ -1,6 +1,8 @@
 
 const info = {};
 
+
+
 info.on_message = (channel, tags, message, self) => {
 	const parts = message.split(" ");
 	if (parts[0] === "cmd") {
@@ -60,10 +62,10 @@ info.on_message = (channel, tags, message, self) => {
 				info.conf_save();
 			}
 		} else {
-			info.client.say(channel, "!oysibot cmd <list, enable, disable>");
+			info.client.say(channel, " oysibot cmd <list, enable, disable>");
 		}
 	} else {
-		info.client.say(channel, "!oysibot <cmd>");
+		info.client.say(channel, " oysibot <cmd>");
 	}
 }
 

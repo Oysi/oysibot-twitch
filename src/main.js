@@ -113,7 +113,7 @@ client.on("message", (channel, tags, message, self) => {
 			}
 			if (info.conf.commands[command_name] && info.conf.commands[command_name].enabled) {
 				if (
-					!info.conf.commands[command_name].moderator
+					!(info.conf.commands[command_name].moderator || command_name === "oysibot")
 					|| tags.badges.broadcaster === "1"
 					|| tags.badges.moderator === "1"
 				) {
