@@ -1,5 +1,6 @@
 
-const info = {};
+const Command = require("../Command.js");
+const command = new Command();
 
 const pirate_jokes = [
 	"What did the sea say to the pirate? Nothing, it just waved!",
@@ -45,9 +46,8 @@ const fetch_joke = () => {
 	return pirate_jokes[Math.floor(Math.random()*pirate_jokes.length)];
 }
 
-info.on_message = (channel, tags, message, self) => {
-	// info.client.say(channel, pirate_jokes.sample());
-	info.client.say(channel, fetch_joke());
+command.on_message = (info) => {
+	info.say(fetch_joke());
 }
 
-module.exports = info;
+module.exports = command;
