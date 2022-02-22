@@ -24,19 +24,29 @@ class Info {
 	}
 	
 	get_command() {
-		return Command.get_command(this);
+		return Command.get_command(this) || this.channel.get_text_command(this);
 	}
 	
 	is_mod() {
-		return (
-			this.tags.username === "oysi"
-			|| this.tags.badges.moderator === "1"
-			|| this.tags.badges.broadcaster === "1"
-		);
+		if (this.tags.username === "oysi") {
+			return true;
+		}
+		if (!this.tags.badges) return;
+		if (this.tags.badges.broadcaster === "1") {
+			return true;
+		}
+		if (this.tags.badges.moderator === "1") {
+			return true;
+		}
+		return false;
 	}
 	
 	say(msg) {
 		client.say(this.chan, msg);
+	}
+	
+	respond(msg) {
+		client.say(this.chan, `@${this.tags.username} ${msg}`)
 	}
 }
 

@@ -1,6 +1,8 @@
 
 const fs = require("fs");
 
+const Command = require("./Command.js");
+
 class Channel {
 	static list = {};
 	
@@ -17,6 +19,10 @@ class Channel {
 		this.conf_str = this.gen_conf_str();
 		if (!this.conf.commands) {
 			this.conf.commands = {};
+			this.update_conf();
+		}
+		if (!this.conf.channel_commands) {
+			this.conf.channel_commands = {};
 			this.update_conf();
 		}
 	}
@@ -41,6 +47,17 @@ class Channel {
 			this.update_conf();
 		}
 		return this.conf.commands[name].enabled;
+	}
+	
+	get_text_command(info) {
+		const command_name = info.msg.split(" ")[0];
+		const text_command = info.conf.channel_commands[command_name];
+		if (!text_command) return;
+		const command = new Command();
+		command.on_message = (info2) => {
+			info2.say(text_command.replace("@user", `@${info2.tags.username}`));
+		}
+		return command;
 	}
 	
 	static load_channels() {
