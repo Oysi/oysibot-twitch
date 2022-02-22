@@ -55,7 +55,8 @@ command.on_message = (info) => {
 			const command_name = parts[0];
 			const channel_command = info.conf.channel_commands[command_name];
 			if (channel_command) {
-				info.conf.channel_commands[command_name] = null;
+				delete info.conf.channel_commands[command_name];
+				// info.conf.channel_commands[command_name] = null;
 				info.update_conf()
 				info.respond("command deleted.");
 			} else {
