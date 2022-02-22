@@ -22,7 +22,9 @@ command.on_message = (info) => {
 			info.say(list.join(" | "));
 			list = [];
 			for (let name in info.conf.channel_commands) {
-				list.push(name);
+				if (info.conf.channel_commands[name]) {
+					list.push(name);
+				}
 			}
 			if (list.length > 0) {
 				info.say("Text commands: " + list.join(" | "));
@@ -55,8 +57,8 @@ command.on_message = (info) => {
 			const command_name = parts[0];
 			const channel_command = info.conf.channel_commands[command_name];
 			if (channel_command) {
-				delete info.conf.channel_commands[command_name];
-				// info.conf.channel_commands[command_name] = null;
+				// delete info.conf.channel_commands[command_name];
+				info.conf.channel_commands[command_name] = null;
 				info.update_conf()
 				info.respond("command deleted.");
 			} else {
