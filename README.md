@@ -7,3 +7,4 @@ Text on local
 Local line
 
 Another local line
+Remote line
