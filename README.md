@@ -2,4 +2,4 @@
 
 Hello, this is my personal twitch bot.
 
-Text on local.
+Text on remote.
