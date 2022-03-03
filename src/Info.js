@@ -28,10 +28,11 @@ class Info {
 	}
 	
 	is_mod() {
+		if (!this.tags) return false;
 		if (this.tags.username === "oysi") {
 			return true;
 		}
-		if (!this.tags.badges) return;
+		if (!this.tags.badges) return false;
 		if (this.tags.badges.broadcaster === "1") {
 			return true;
 		}
