@@ -12,7 +12,7 @@ command.on_message = (info) => {
 		return;
 	}
 	
-	info.respond(`testban (nothing actually happens) on ${info.msg_cmd}`)
+	info.respond(`testban (nothing actually happens) on ${name}`)
 }
 
 module.exports = command;
