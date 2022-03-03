@@ -12,13 +12,13 @@ command.on_message = (info) => {
 		return;
 	}
 	
-	client.ban(info.chan, name)
+	client.unban(info.chan, name)
 	.then(() => {
-		info.respond(`Successfully banned ${name}`);
+		info.respond(`Successfully unbanned ${name}`);
 	}, (err) => {
 		console.log("ERROR");
 		console.log(err);
-		info.respond("Something went wrong, could not ban.");
+		info.respond("Something went wrong, could not unban.");
 	})
 }
 
