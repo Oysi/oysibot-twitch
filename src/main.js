@@ -79,7 +79,7 @@ const custom_urgie = (info) => {
 			);
 		}
 	}
-	if ((info.msg === "!resetboy") && (tags.username === "urgie" || tags.username === "oysi")) {
+	if ((info.msg === "!resetboys") && (info.tags.username === "urgie" || info.tags.username === "oysi")) {
 		info.conf.least_boy.name = "none";
 		info.conf.least_boy.amnt = "100";
 		info.conf.most_boy.name = "none";
