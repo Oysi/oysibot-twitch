@@ -43,3 +43,6 @@ command.on_message = (info) => {
 }
 
 module.exports = command;
+
+// 2ckkm00zts4ttq7lrzpkdutfphyp3l
+// syonbo0cw6wbih3g977wypck4s2buz
