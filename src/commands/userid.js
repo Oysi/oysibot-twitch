@@ -30,6 +30,7 @@ command.on_message = (info) => {
 			}
 		},
 		(err, res, body) => {
+			console.log(body);
 			try {
 				info.say(`${body.data[0].login} : ${body.data[0].id} (${body.data[0].created_at.slice(0, 10)})`);
 			} catch (e) {
