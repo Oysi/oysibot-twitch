@@ -33,8 +33,8 @@ command.on_message = (info) => {
 			try {
 				info.say(`${body.data[0].login} : ${body.data[0].id} (${body.data[0].created_at.slice(0, 10)})`);
 			} catch (e) {
-				// console.log("ERROR");
-				// console.log(e);
+				console.log("ERROR");
+				console.log(e);
 				info.say(`@${info.tags.username} could not find user.`);
 			}
 		}
