@@ -2,6 +2,8 @@
 const Command = require("../Command.js");
 const command = new Command();
 
+const moment = require("moment");
+
 function getTimeUntilStarfield() {
 	let date1 = moment.utc();
 	let date2 = moment.utc([2023, 8, 1, 22]);
