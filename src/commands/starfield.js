@@ -44,7 +44,7 @@ function getTimeUntilStarfield() {
 
 	let text = arr.join(" ");
 
-	return arr.join(" ");
+	return "Starfield launches in " + arr.join(" ");
 }
 
 command.on_message = (info) => {
