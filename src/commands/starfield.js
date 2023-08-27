@@ -6,7 +6,8 @@ const moment = require("moment");
 
 function getTimeUntilStarfield() {
 	let date1 = moment.utc();
-	let date2 = moment.utc([2023, 8, 1, 22]);
+	// let date2 = moment.utc([2023, 8, 1, 22]);
+	let date2 = moment.utc([2023, 7, 31, 17]).add(7, "hours");
 
 	let diff = date2.diff(date1) / 1000;
 
@@ -46,7 +47,7 @@ function getTimeUntilStarfield() {
 
 	let text = arr.join(" ");
 
-	return "Starfield launches in " + arr.join(" ");
+	return "Starfield launches in " + arr.join(" ") + " (may not be exact)";
 }
 
 command.on_message = (info) => {
