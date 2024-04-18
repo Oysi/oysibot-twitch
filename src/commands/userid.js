@@ -26,7 +26,7 @@ command.on_message = (info) => {
 			json: true,
 			headers: {
 				"Client-ID": process.env.CLIENTID,
-				"Authorization": "Bearer " + process.env.PASSWORD.substring(6),
+				"Authorization": "Bearer " + process.env.TWITCH_PASSWORD.substring(6),
 			}
 		},
 		(err, res, body) => {

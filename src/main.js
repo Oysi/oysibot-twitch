@@ -11,11 +11,16 @@ const Info = require("./Info.js");
 Channel.load_channels();
 Command.load_commands();
 
+console.log("USERNAME: " + process.env.TWITCH_USERNAME);
+console.log("PASSWORD: " + process.env.TWITCH_PASSWORD);
+
+console.log("channels", Channel.get_channels_array());
+
 const client = new tmi.Client({
 	options: { debug: true },
 	identity: {
-		username: process.env.USERNAME,
-		password: process.env.PASSWORD
+		username: process.env.TWITCH_USERNAME,
+		password: process.env.TWITCH_PASSWORD
 	},
 	channels: Channel.get_channels_array(),
 });
