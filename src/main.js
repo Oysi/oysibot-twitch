@@ -35,7 +35,17 @@ client.on("message", (chan, tags, msg, self) => {
 	const info = new Info(chan, tags, msg, self);
 	
 	if (info.command) {
-		info.command.on_message(info);
+		try {
+			info.command.on_message(info);
+		} catch (err) {
+			console.log("-".repeat(50));
+			console.log("ERROR");
+			console.log("ERROR");
+			console.log(err);
+			console.log("ERROR");
+			console.log("ERROR");
+			console.log("-".repeat(50));
+		}
 	}
 	
 	if (info.chan === "oysi") custom_oysi(info);
