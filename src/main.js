@@ -30,26 +30,27 @@ global.client = client
 client.connect();
 
 client.on("message", (chan, tags, msg, self) => {
-	if (self) return;
-	
-	const info = new Info(chan, tags, msg, self);
-	
-	if (info.command) {
-		try {
+	try {
+		if (self) return;
+		
+		const info = new Info(chan, tags, msg, self);
+		
+		if (info.command) {
 			info.command.on_message(info);
-		} catch (err) {
-			console.log("-".repeat(50));
-			console.log("ERROR");
-			console.log("ERROR");
-			console.log(err);
-			console.log("ERROR");
-			console.log("ERROR");
-			console.log("-".repeat(50));
 		}
+		
+		if (info.chan === "oysi") custom_oysi(info);
+		if (info.chan === "urgie") custom_urgie(info);
+	} catch (err) {
+		console.log("-".repeat(50));
+		console.log("ERROR");
+		console.log("ERROR");
+		console.log(err);
+		console.log("ERROR");
+		console.log("ERROR");
+		console.log("-".repeat(50));
+		info.respond("Apologies, command didn't work")
 	}
-	
-	if (info.chan === "oysi") custom_oysi(info);
-	if (info.chan === "urgie") custom_urgie(info);
 });
 
 const custom_oysi = (info) => {
